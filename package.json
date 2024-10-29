@@ -1,0 +1,1 @@
+{ "dependencies": { "@types/express": "^5.0.0", "@types/node": "^22.8.2", "cors": "^2.8.5", "eiows": "^7.1.1", "express": "^4.21.1", "socket.io": "^4.8.1" } }
