@@ -7,7 +7,30 @@
     <script src="https://cdn.tailwindcss.com"></script>
   </head>
   <body>
-    <h1>Hello World</h1>
+    <div
+      class="container mx-auto min-h-screen flex items-center justify-center"
+    >
+      <div class="w-full max-w-md rounded-lg bg-neutral-700 m-3">
+        <div class="p-3 text-neutral-100">
+          <h1 class="font-bold text-xl mb-3">Join The Chatroom?</h1>
+
+          <div class="mb-3">
+            <label for="usernameInput" class="">Username: </label>
+            <input
+              type="text"
+              id="usernameInput"
+              name="username"
+              class="rounded-lg w-full py-1 px-3 outline-none text-neutral-700"
+              placeholder="enter your username here..."
+            />
+          </div>
+
+          <div class="flex justify-end">
+            <button class="bg-blue-500 rounded-md px-6 py-1">Join Now</button>
+          </div>
+        </div>
+      </div>
+    </div>
 
     <script src="/socket.io/socket.io.js"></script>
     <script>

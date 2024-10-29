@@ -12,11 +12,13 @@ app.get("/", (req: Request, res: Response) => {
   res.sendFile(path.join(__dirname, "views", "index.html"));
 });
 
+app.get("/chat", (req: Request, res: Response) => {
+  res.sendFile(path.join(__dirname, "views", "chat.html"));
+});
+
 app.use(express.static(path.join(__dirname, "public")));
 
 io.on("connection", (socket) => {
-  console.log("New Web Socket Connection...");
-
   socket.emit("message", "Welcome to the Chatroom!");
 });
 
