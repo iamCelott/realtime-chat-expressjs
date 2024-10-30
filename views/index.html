@@ -10,7 +10,12 @@
     <div
       class="container mx-auto min-h-screen flex items-center justify-center"
     >
-      <div class="w-full max-w-md rounded-lg bg-neutral-700 m-3">
+      <!-- Start Here -->
+      <div
+        id="joinChatForm"
+        style="display: block"
+        class="w-full max-w-md rounded-lg bg-neutral-700 m-3"
+      >
         <div class="p-3 text-neutral-100">
           <h1 class="font-bold text-xl mb-3">Join The Chatroom?</h1>
 
@@ -20,17 +25,55 @@
               type="text"
               id="usernameInput"
               name="username"
-              class="rounded-md w-full py-1 px-3 outline-none text-neutral-700"
+              class="rounded-md w-full py-1.5 px-3 outline-none text-neutral-700"
               placeholder="enter your username here..."
             />
           </div>
 
           <div class="flex justify-end">
             <button
-              class="bg-blue-500 rounded-md px-6 py-1"
+              class="bg-blue-500 hover:bg-blue-600 rounded-md px-6 py-1"
               onclick="joinChat()"
             >
               Join Now
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div
+        id="chatroom"
+        style="display: none"
+        class="w-full h-screen max-w-lg bg-neutral-300 mx-3"
+      >
+        <div class="h-full flex flex-col justify-between">
+          <div
+            class="w-full p-3 bg-neutral-700 text-white flex justify-between items-center"
+          >
+            <h1 class="text-lg font-bold">iamCelott's Conversation</h1>
+
+            <img
+              src="/assets/logout.png"
+              alt="Exit"
+              class="w-7 h-7 cursor-pointer"
+            />
+          </div>
+
+          <div class="w-full flex-grow p-3 bg-neutral-100 overflow-y-auto">
+            <!-- Content -->
+          </div>
+
+          <div class="w-full p-3 bg-neutral-500 flex items-center">
+            <textarea
+              id="messageInput"
+              class="w-full h-11 resize-none rounded-md p-2 outline-none text-neutral-700"
+              placeholder="Type your message here..."
+            ></textarea>
+            <button
+              class="bg-blue-500 h-full text-white px-4 ml-3 rounded-md"
+              onclick="sendMessage()"
+            >
+              Send
             </button>
           </div>
         </div>
@@ -51,6 +94,8 @@
 
         if (username) {
           socket.emit("join", username);
+          document.getElementById("joinChatForm").style.display = "none";
+          document.getElementById("chatroom").style.display = "block";
         } else {
           alert("Please enter a username");
         }

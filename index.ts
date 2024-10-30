@@ -14,10 +14,6 @@ app.get("/", (req: Request, res: Response) => {
   res.sendFile(path.join(__dirname, "views", "index.html"));
 });
 
-app.get("/chat", (req: Request, res: Response) => {
-  res.sendFile(path.join(__dirname, "views", "chat.html"));
-});
-
 app.post("/message", async (req: Request, res: Response) => {
   const { username, message } = req.body;
 
