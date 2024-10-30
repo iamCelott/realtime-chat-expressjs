@@ -20,13 +20,18 @@
               type="text"
               id="usernameInput"
               name="username"
-              class="rounded-lg w-full py-1 px-3 outline-none text-neutral-700"
+              class="rounded-md w-full py-1 px-3 outline-none text-neutral-700"
               placeholder="enter your username here..."
             />
           </div>
 
           <div class="flex justify-end">
-            <button class="bg-blue-500 rounded-md px-6 py-1">Join Now</button>
+            <button
+              class="bg-blue-500 rounded-md px-6 py-1"
+              onclick="joinChat()"
+            >
+              Join Now
+            </button>
           </div>
         </div>
       </div>
@@ -35,9 +40,21 @@
     <script src="/socket.io/socket.io.js"></script>
     <script>
       const socket = io();
-      socket.on("message", (message) => {
-        console.log(message);
+
+      socket.on("welcome", (welcome) => {
+        console.log(welcome);
       });
+
+      const joinChat = () => {
+        const usernameInput = document.getElementById("usernameInput");
+        const username = usernameInput.value.trim();
+
+        if (username) {
+          socket.emit("join", username);
+        } else {
+          alert("Please enter a username");
+        }
+      };
     </script>
   </body>
 </html>
